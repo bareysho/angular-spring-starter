@@ -1,0 +1,24 @@
+app:
+  name: anuglar2-spring-jwt
+
+jwt:
+  header: Authorization
+  expires_in: 600 # 10 minutes
+  secret: queenvictoria
+  cookie: AUTH-TOKEN
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    com.bfwg: DEBUG
+
+spring:
+  jpa:
+    hibernate:
+      # possible values: validate | update | create | create-drop
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/instagram?autoReconnect=true&useSSL=false
+    username: root
+    password: Medugygen553277
+    driver-class-name: com.mysql.jdbc.Driver
