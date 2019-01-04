@@ -15,9 +15,9 @@
  */
 package com.bfwg.instagram4j.requests;
 
+import com.bfwg.instagram4j.requests.payload.InstagramGetUserReelMediaFeedResult;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.brunocvcunha.instagram4j.requests.payload.InstagramGetUserReelMediaFeedResult;
 
 /**
  * Get User Reel Media Feed equest

@@ -15,7 +15,7 @@
  */
 package com.bfwg.instagram4j.requests;
 
-import org.brunocvcunha.instagram4j.requests.payload.InstagramFeedResult;
+import com.bfwg.instagram4j.requests.payload.InstagramFeedResult;
 
 import lombok.SneakyThrows;
 

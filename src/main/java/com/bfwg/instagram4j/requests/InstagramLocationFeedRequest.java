@@ -15,11 +15,12 @@
  */
 package com.bfwg.instagram4j.requests;
 
+import com.bfwg.instagram4j.requests.payload.InstagramFeedResult;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.brunocvcunha.instagram4j.requests.payload.InstagramFeedResult;
+
 
 /**
  * Location Feed Request

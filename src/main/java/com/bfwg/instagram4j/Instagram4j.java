@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Optional;
 
+import com.bfwg.instagram4j.requests.payload.InstagramLoginResult;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -41,7 +42,6 @@ import com.bfwg.instagram4j.requests.internal.InstagramReadMsisdnHeaderRequest;
 import com.bfwg.instagram4j.requests.internal.InstagramSyncFeaturesRequest;
 import com.bfwg.instagram4j.requests.internal.InstagramZeroRatingTokenRequest;
 import com.bfwg.instagram4j.requests.payload.InstagramLoginPayload;
-import org.brunocvcunha.instagram4j.requests.payload.InstagramLoginResult;
 import com.bfwg.instagram4j.requests.payload.InstagramLoginTwoFactorPayload;
 import com.bfwg.instagram4j.util.InstagramGenericUtil;
 import com.bfwg.instagram4j.util.InstagramHashUtil;

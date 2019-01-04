@@ -42,11 +42,11 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.brunocvcunha.instagram4j</groupId>
-            <artifactId>instagram4j</artifactId>
-            <version>1.8</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.brunocvcunha.instagram4j</groupId>-->
+            <!--<artifactId>instagram4j</artifactId>-->
+            <!--<version>1.8</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>

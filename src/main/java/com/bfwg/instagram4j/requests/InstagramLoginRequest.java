@@ -15,10 +15,10 @@
  */
 package com.bfwg.instagram4j.requests;
 
+import com.bfwg.instagram4j.requests.payload.InstagramLoginResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.bfwg.instagram4j.requests.payload.InstagramLoginPayload;
-import org.brunocvcunha.instagram4j.requests.payload.InstagramLoginResult;
 
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;

@@ -1,6 +1,7 @@
 package com.bfwg.model;
 
-import org.brunocvcunha.instagram4j.requests.payload.InstagramLoginResult;
+
+import com.bfwg.instagram4j.requests.payload.InstagramLoginResult;
 
 import java.io.Serializable;
 
