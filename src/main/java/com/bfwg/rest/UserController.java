@@ -92,7 +92,7 @@ public class UserController {
 
     @RequestMapping(method = POST, value = "/instagram/like-post")
     @PreAuthorize("hasRole('USER')")
-    public void instagramPostLike (@RequestParam long postId,
+    public InstagramLikeResult instagramPostLike (@RequestParam long postId,
                                         @RequestParam String uuid) throws IOException, ClassNotFoundException {
         System.out.println(postId);
         InstagramAccount instagramAccount = instagramService.findByUuid(uuid);
@@ -105,7 +105,7 @@ public class UserController {
         instagram.setup();
 
 
-        instagram.sendRequest(new InstagramLikeRequest(postId));
+        return instagram.sendRequest(new InstagramLikeRequest(postId));
     }
 
     @RequestMapping(method = POST, value = "/claim-instagram")
