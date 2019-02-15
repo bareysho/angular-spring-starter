@@ -4,6 +4,7 @@ import com.bfwg.exception.ResourceConflictException;
 import com.bfwg.instagram4j.Instagram4j;
 import com.bfwg.instagram4j.requests.InstagramLikeRequest;
 import com.bfwg.instagram4j.requests.InstagramSearchUsernameRequest;
+import com.bfwg.instagram4j.requests.InstagramUploadPhotoRequest;
 import com.bfwg.instagram4j.requests.InstagramUserFeedRequest;
 import com.bfwg.instagram4j.requests.payload.*;
 import com.bfwg.model.InstagramAccount;
@@ -11,6 +12,7 @@ import com.bfwg.model.User;
 import com.bfwg.model.UserRequest;
 import com.bfwg.service.InstagramService;
 import com.bfwg.service.UserService;
+import com.bfwg.util.Util;
 import org.apache.http.client.CookieStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +24,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
@@ -90,6 +93,27 @@ public class UserController {
         return instagramService.findByOwner_id(user.getId());
     }
 
+    @RequestMapping(method = POST, value = "/instagram/upload")
+    @PreAuthorize("hasRole('USER')")
+    public InstagramLikeResult upload (@RequestParam String file,
+                                                  @RequestParam String uuid) throws IOException, ClassNotFoundException {
+        InstagramAccount instagramAccount = instagramService.findByUuid(uuid);
+
+        Instagram4j instagram = (Instagram4j) UserController.byteArrayToObject(instagramAccount.getInstagram4j());
+        CookieStore cookieStore = (CookieStore) UserController.byteArrayToObject(instagramAccount.getCookieStore());
+
+        instagram.setUuid(instagramAccount.getUuid());
+        instagram.setCookieStore(cookieStore);
+        instagram.setup();
+
+        BufferedImage bufferedImage = Util.decodeToImage(file);
+
+        InstagramConfigurePhotoResult configurePhotoResult = instagram.sendRequest(new InstagramUploadPhotoRequest(bufferedImage, "123", null));
+        System.out.println(configurePhotoResult.getStatus());
+
+        return null;
+    }
+
     @RequestMapping(method = POST, value = "/instagram/like-post")
     @PreAuthorize("hasRole('USER')")
     public InstagramLikeResult instagramPostLike (@RequestParam long postId,
@@ -107,6 +131,7 @@ public class UserController {
 
         return instagram.sendRequest(new InstagramLikeRequest(postId));
     }
+
 
     @RequestMapping(method = POST, value = "/claim-instagram")
     @PreAuthorize("hasRole('USER')")
