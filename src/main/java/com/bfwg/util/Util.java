@@ -7,20 +7,20 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class Util {
-    public static BufferedImage decodeToImage(String imageString) {
-        BufferedImage image = null;
-        byte[] imageByte;
-        try {
-            BASE64Decoder decoder = new BASE64Decoder();
-            imageByte = decoder.decodeBuffer(imageString.split(",")[1].replaceAll("\\s", "+"));
-            ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
-            image = ImageIO.read(bis);
-            bis.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        public static BufferedImage decodeToImage(String imageString) {
+            BufferedImage image = null;
+            byte[] imageByte;
+            try {
+                BASE64Decoder decoder = new BASE64Decoder();
+                imageByte = decoder.decodeBuffer(imageString.split(",")[1].replaceAll("\\s", "+"));
+                ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+                image = ImageIO.read(bis);
+                bis.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return image;
         }
-        return image;
-    }
 
     public static byte[] objectToByteArray (Object object) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();

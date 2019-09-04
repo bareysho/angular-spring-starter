@@ -1,6 +1,8 @@
 package com.bfwg.service.impl;
 
 import java.util.List;
+
+import com.bfwg.model.UserRoleName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -59,12 +61,15 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public User save(UserRequest userRequest) {
+    System.out.println("serRequest");
+    System.out.println(userRequest);
     User user = new User();
     user.setUsername(userRequest.getUsername());
     user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
     user.setFirstname(userRequest.getFirstname());
     user.setLastname(userRequest.getLastname());
-    List<Authority> auth = authService.findByname("ROLE_USER");
+    List<Authority> auth = authService.findByname(UserRoleName.ROLE_USER);
+    System.out.println(auth);
     user.setAuthorities(auth);
     this.userRepository.save(user);
     return user;

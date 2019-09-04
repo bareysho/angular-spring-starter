@@ -45,14 +45,18 @@ public class ScheduledTask {
 
             InstagramAccount instagramAccount = instagramService.findByUuid(uuid);
 
-            Instagram4j instagram = (Instagram4j) Util.byteArrayToObject(instagramAccount.getInstagram4j());
-            CookieStore cookieStore = (CookieStore) Util.byteArrayToObject(instagramAccount.getCookieStore());
+            Instagram4j instagram
+                    = (Instagram4j) Util.byteArrayToObject(instagramAccount.getInstagram4j());
+            CookieStore cookieStore
+                    = (CookieStore) Util.byteArrayToObject(instagramAccount.getCookieStore());
 
             instagram.setUuid(instagramAccount.getUuid());
             instagram.setCookieStore(cookieStore);
             instagram.setup();
 
-            InstagramConfigurePhotoResult configurePhotoResult = instagram.sendRequest(new InstagramUploadPhotoRequest(bufferedImage, comment, null));
+            InstagramConfigurePhotoResult configurePhotoResult
+                    = instagram.sendRequest(new InstagramUploadPhotoRequest
+                    (bufferedImage, comment, null));
             System.out.println(configurePhotoResult.getStatus());
             scheduledPostService.deleteById(sp.getId());
         }

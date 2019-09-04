@@ -234,7 +234,8 @@ public class UserController {
     @RequestMapping(method = POST, value = "/signup")
     public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest,
                                      UriComponentsBuilder ucBuilder) {
-
+        System.out.println("post");
+        System.out.println(userRequest);
         User existUser = this.userService.findByUsername(userRequest.getUsername());
         if (existUser != null) {
             throw new ResourceConflictException(userRequest.getId(), "Username already exists");
