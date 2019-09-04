@@ -20,5 +20,5 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/instagram?autoReconnect=true&useSSL=false
     username: root
-    password: root
+    password: Medugygen553277
     driver-class-name: com.mysql.jdbc.Driver
